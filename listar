@@ -1,0 +1,47 @@
+<?php 
+include"encabezado.php";
+include_once "base_de_datos.php";
+$tb='producto';
+$sentencia = $base_de_datos->query("SELECT * FROM $tb;");
+$producto = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+?>
+<body background="Adjuntos/slider3.jpg" >
+	<div class="col-xs-12">
+		<h1 class="wrap-login101">Productos</h1><br>
+		<div>
+			<a class="btn btn-success" href="./formulario.php">Nuevo <i class="fa fa-plus"></i></a>
+		</div>
+		<br>
+		<table class="table table-bordered">
+			<thead class="txt2">
+				<tr>
+					<th>ID</th>
+					<th>Tipo</th>
+					<th>Nombre</th>
+					<th>Impuesto</th>
+					<th>Precio</th>
+					<th>Existencia</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($producto as $producto){ ?>
+				<tr>
+					<td><?php echo $producto->Id_pr ?></td>
+					<td><?php echo $producto->Tipo ?></td>
+					<td><?php echo $producto->Descripcion_pr ?></td>
+					<td><?php echo $producto->Impuesto ?></td>
+					<td><?php echo $producto->Precio ?></td>
+					<td><?php echo $producto->Existencia ?></td>
+					<td><a class="btn btn-warning" href="<?php echo "editar.php?id=" . $producto->Id_pr?>"><i class="fa fa-edit"></i></a></td>
+					<td><a class="btn btn-danger" href="<?php 
+					echo "eliminar.php?id=" . $producto->Id_pr?>&tb=`producto`&ide=`Id_pr`&listar=listar"><i class="fa fa-trash"></i></a></td>
+				</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+	</div>
+
+<?php include_once "pie.php" ?>
