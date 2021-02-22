@@ -1,0 +1,11 @@
+{
+    "name": "vendor/clase1",
+    "description": "Description of project clase1.",
+    "authors": [
+        {
+            "name": "a",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {}
+}
